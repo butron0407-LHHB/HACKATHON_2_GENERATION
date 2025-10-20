@@ -1,6 +1,7 @@
 package com.phonebook.hackhaton.contact;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -24,6 +25,11 @@ public class Main {
                 case 1 -> anadirContacto();
                 case 2 -> existeContacto();
                 case 3 -> listarContactos();
+                case 4 -> buscarContacto();
+                case 5 -> eliminarContacto();
+                case 6 -> modificarTelefono();
+                case 7 -> agendaLlena();
+                case 8 -> espaciosLibres();
                 case 9 -> {
                     System.out.println("\n╔════════════════════════════════════════╗");
                     System.out.println("  ¡Gracias por usar la Agenda!         ");
@@ -70,12 +76,11 @@ public class Main {
      */
     private static void mostrarMenu() {
         System.out.println("╔═════════════════════════════════════════════╗");
-        System.out.println("                          MENÚ PRINCIPAL - AGENDA             ");
+        System.out.println("           MENÚ PRINCIPAL - AGENDA             ");
         System.out.println("╠═════════════════════════════════════════════╣");
         System.out.println("1. Añadir contacto                          ");
         System.out.println("2. Verificar si existe contacto             ");
         System.out.println("3. Listar todos los contactos               ");
-        System.out.println("-------------------------------FUNCIONES FALTANTES-----------------------------");
         System.out.println("4. Buscar contacto                          ");
         System.out.println("5. Eliminar contacto                        ");
         System.out.println("6. Modificar teléfono                       ");
@@ -153,7 +158,7 @@ public class Main {
     private static void listarContactos() {
         System.out.println("║        LISTA DE CONTACTOS             ║");
 
-        var contactos = agenda.listarContactos();
+        List<Contact> contactos = agenda.listarContactos();
 
         if (contactos.isEmpty()) {
             System.out.println("\n⚠️  La agenda está vacía.\n");
@@ -170,28 +175,88 @@ public class Main {
         presionaEnterParaContinuar();
     }
 
-    /*
-    Aqui faltan añadir las otras funciones restantes del menú:
-        buscaContacto(String nombre):
-        Permite buscar un contacto por nombre y apellido.
-        Si el contacto existe, muestra el teléfono. Si no existe, muestra un mensaje indicando que no se ha encontrado.
+    // Opción 4: Buscar contacto
+    private static void buscarContacto() {
+        System.out.println("\n╔═══════════════════════════════════════╗");
+        System.out.println("          BUSCAR CONTACTO               ");
+        System.out.println("╚═══════════════════════════════════════╝");
 
-        eliminarContacto(Contacto c):
-        Elimina un contacto de la agenda. Muestra un mensaje indicando si la eliminación ha sido exitosa o no.
-        Si se intenta eliminar un contacto que no existe, debe indicarse al usuario.
+        System.out.print("Nombre: ");
+        String nombre = scanner.nextLine();
 
-         modificarTelefono(String nombre, String apellido, String nuevoTelefono):
-         Permite modificar el teléfono de un contacto existente.
-         Si el contacto no existe, debe mostrar un mensaje.
+        System.out.print("Apellido: ");
+        String apellido = scanner.nextLine();
 
-        agendaLlena():
-        Indica si la agenda está llena.
-        Muestra un mensaje indicando que no hay espacio disponible para nuevos contactos.
+        System.out.println("\n" + "─".repeat(45));
+        agenda.buscarContacto(nombre, apellido);
+        System.out.println("─".repeat(45) + "\n");
 
-        espacioLibres():
-        Muestra cuántos contactos más se pueden agregar a la agenda.
-        Esto debe basarse en el tamaño máximo definido al crear la agenda.
-     */
+        presionaEnterParaContinuar();
+    }
+
+    // Opción 5: Eliminar contacto
+    private static void eliminarContacto() {
+        System.out.println("\n╔═══════════════════════════════════════╗");
+        System.out.println("          ELIMINAR CONTACTO             ");
+        System.out.println("╚═══════════════════════════════════════╝");
+
+        System.out.print("Nombre: ");
+        String nombre = scanner.nextLine();
+
+        System.out.print("Apellido: ");
+        String apellido = scanner.nextLine();
+
+        System.out.println("\n" + "─".repeat(45));
+        agenda.eliminarContacto(nombre, apellido);
+        System.out.println("─".repeat(45) + "\n");
+
+        presionaEnterParaContinuar();
+    }
+
+    // Opción 6: modifucar teléfono del contacto
+    private static void modificarTelefono() {
+        System.out.println("\n╔═══════════════════════════════════════╗");
+        System.out.println("       MODIFICAR TELÉFONO CONTACTO      ");
+        System.out.println("╚═══════════════════════════════════════╝");
+
+        System.out.print("Nombre: ");
+        String nombre = scanner.nextLine();
+
+        System.out.print("Apellido: ");
+        String apellido = scanner.nextLine();
+
+        System.out.print("Nuevo teléfono (10 dígitos): ");
+        String telefono = scanner.nextLine();
+
+        System.out.println("\n" + "─".repeat(45));
+        agenda.modificarTelefono(nombre, apellido, telefono);
+        System.out.println("─".repeat(45) + "\n");
+
+        presionaEnterParaContinuar();
+    }
+
+    // opción 7: ver si la agenda está llena
+    private static void agendaLlena() {
+        System.out.println("\n╔═══════════════════════════════════════╗");
+        System.out.println("          VERIFICAR AGENDA LLENA        ");
+        System.out.println("╚═══════════════════════════════════════╝");
+
+        if (!agenda.agendaLlena()) {
+                System.out.println("Aún hay espacios en tu agenda");
+        }
+        presionaEnterParaContinuar();
+    }
+
+    // Opción 8: ver espacios libre
+    private static void espaciosLibres() {
+        System.out.println("\n╔═══════════════════════════════════════╗");
+        System.out.println("          ESPACIOS DISPONIBLES          ");
+        System.out.println("╚═══════════════════════════════════════╝");
+
+        agenda.espaciosLibres();
+        presionaEnterParaContinuar();
+    }
+
 
     //Función para continuar
     private static void presionaEnterParaContinuar() {
