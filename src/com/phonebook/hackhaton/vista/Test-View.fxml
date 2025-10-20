@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      spacing="20"
+      alignment="CENTER"
+      stylesheets="@styles.css"
+      prefWidth="400"
+      prefHeight="300">
+
+    <Label text="JavaFX con Estilos!"
+           style="-fx-font-size: 28px;"/>
+
+    <Button text="Haz clic aquí"/>
+
+    <Label text="Si ves esto, todo está bien configurado"/>
+
+</VBox>

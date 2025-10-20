@@ -1,6 +1,4 @@
-package com.phonebook.hackhaton.contact;
-
-import java.util.Objects;
+package com.phonebook.hackhaton.modelo;
 
 public class Contact {
     private String name;

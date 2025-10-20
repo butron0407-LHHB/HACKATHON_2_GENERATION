@@ -1,4 +1,4 @@
-package com.phonebook.hackhaton.contact;
+package com.phonebook.hackhaton.modelo;
 
 import java.util.InputMismatchException;
 import java.util.List;
