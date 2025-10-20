@@ -1,14 +1,15 @@
 package com.phonebook.hackhaton.contact;
 
 public class Contact {
-    private String phone;
     private String name;
     private String lastName;
+    private String phone;
 
-    public Contact(String phone, String name, String lastName) {
-        this.phone = phone;
+    // Constructor corregido para el orden (name, lastName, phone)
+    public Contact(String name, String lastName, String phone) {
         this.name = name;
         this.lastName = lastName;
+        this.phone = phone;
     }
 
     public String getPhone() {
