@@ -1,5 +1,7 @@
 package com.phonebook.hackhaton.contact;
 
+import java.util.Objects;
+
 public class Contact {
     private String name;
     private String lastName;
@@ -12,6 +14,14 @@ public class Contact {
         this.phone = phone;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -20,11 +30,10 @@ public class Contact {
         this.phone = phone;
     }
 
-    public String getName() {
-        return name;
+    // Transformar los datos recibidos en string xd
+    @Override
+    public String toString() {
+        return name + " " + lastName + " - " + phone;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
 }
