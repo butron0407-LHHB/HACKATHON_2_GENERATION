@@ -15,10 +15,11 @@ public class AgendaService {
 
     private final List<Contact> contacts = new ArrayList<>();
     private final int contactLimit;
-
+    
     public AgendaService(int contactLimit) {
         this.contactLimit = contactLimit;
     }
+    //----------------- JUAN
     //Validaciones de entradas de nombre y teléfono:
     private boolean isValidNameOrLastName(String field){
         return field != null && !field.trim().isEmpty() && NAME_VALIDADOR.matcher(field.trim()).matches();
@@ -26,6 +27,10 @@ public class AgendaService {
     private boolean isValidPhone(String phone){
         return phone != null && PHONE_VALIDADOR.matcher(phone.trim()).matches();
     }
+
+    //----------------- FIN DE JUAN
+
+    //----------------- Luis
 
     // Metodo para añadir contacto con todas las validaciones
     public boolean anadirContacto(String name, String lastName, String phone) {
@@ -61,6 +66,9 @@ public class AgendaService {
         return true;
     }
 
+    //----------------- FIN DE LUIS
+
+    //----------------- dANIEL
     // Verifica si un contacto existe
     public boolean existeContacto(String name, String lastName) {
         return contacts.stream()
@@ -76,6 +84,7 @@ public class AgendaService {
                 .toList();
     }
 
+    //----------------- INICIO FRANCISCO
     // Buscar contacto
     public void buscarContacto(String name, String lastName) {
         Optional<Contact> found = contacts.stream()
@@ -85,7 +94,7 @@ public class AgendaService {
 
         found.ifPresentOrElse(
                 contact -> System.out.println("Teléfono de " + name + " " + lastName + ": " + contact.getPhone()),
-                () -> System.out.println("No se encontró el contacto " + name + " " + lastName + ".")
+                () -> System.out.println("No se encontró el contacto  " + name + " " + lastName + ".")
         );
     }
 
@@ -104,6 +113,10 @@ public class AgendaService {
         return wasRemoved;
     }
 
+    //----------------- FIN FRANCISCO
+
+
+    //----------------- INICIO LUIS
     // Modifica el teléfono de un contacto existente (con nueva validación de teléfono)
     public boolean modificarTelefono(String name, String lastName, String newPhone) {
         if (!isValidPhone(newPhone)) {
@@ -124,7 +137,9 @@ public class AgendaService {
             return false;
         }
     }
+    //----------------- FIN LUIS
 
+    //----------------- INICIO ALBERTO
     // Indica si la agenda está llena
     public boolean agendaLlena() {
         boolean full = contacts.size() >= contactLimit;
@@ -144,4 +159,6 @@ public class AgendaService {
         }
         return available;
     }
+
+    //----------------- FIN ALBERTO
 }
