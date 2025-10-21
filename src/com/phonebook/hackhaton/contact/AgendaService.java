@@ -19,7 +19,7 @@ public class AgendaService {
     public AgendaService(int contactLimit) {
         this.contactLimit = contactLimit;
     }
-    //----------------- JUAN
+
     //Validaciones de entradas de nombre y teléfono:
     private boolean isValidNameOrLastName(String field){
         return field != null && !field.trim().isEmpty() && NAME_VALIDADOR.matcher(field.trim()).matches();

@@ -1,13 +1,11 @@
-package com.phonebook.hackhaton.contact;
+package com.phonebook.hackhaton.agendahackhaton.model;
 
-import java.util.Objects;
 
 public class Contact {
     private String name;
     private String lastName;
     private String phone;
 
-    // Constructor corregido para el orden (name, lastName, phone)
     public Contact(String name, String lastName, String phone) {
         this.name = name;
         this.lastName = lastName;
@@ -29,11 +27,4 @@ public class Contact {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-
-    @Override
-    public String toString() {
-        return name + " " + lastName + " - " + phone;
-    }
-
 }
